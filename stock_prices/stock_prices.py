@@ -3,7 +3,51 @@
 import argparse
 
 def find_max_profit(prices):
-  pass
+
+  # checking if the list is in descending order:
+  flag = 0
+  index = 0 
+
+  if sorted(prices, reverse=True) == prices:
+
+  	return -min(prices)
+
+
+
+  k = 0 # array index
+  high_index = 0
+
+  highest = 0 
+  lowest = max(prices) 
+
+  while k <= len(prices)-1:
+
+    if lowest > prices[k] and k != len(prices)-1:
+
+      lowest = prices[k]
+
+      high_index = k
+
+      while high_index <= len(prices)-1:
+
+      	if highest < prices[high_index]:
+      		highest = prices[high_index]
+      	
+      	high_index += 1
+
+    k += 1
+
+    print('lowest', lowest )
+    print('highest', highest)
+    
+
+  return highest - lowest
+  # find the minimum buying price 
+
+  # find the maximum selling price 
+
+  # constraint the algorithm will have to use a buying price that happens before 
+  # the highest selling price 
 
 
 if __name__ == '__main__':
