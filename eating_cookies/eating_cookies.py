@@ -7,22 +7,29 @@ import sys
 # recursive solution
 def eating_cookies(n, cache=None):
   # base cases:
+  # There is only one way to eat zero cookies
   # if n == 0:
   #   return 1 
+  # There is only one way to eat one cookie
   # if n == 1:
   #   return 1
+  # There are 2 total ways to eat 2 cookies: [1,1], [2]
   # if n == 2:
-  #   return 3
-  
+  #   return 2
+  if cache != None and cache[n] != 0:
+    return cache[n]
   if n == 0:
     return 1
   elif n == 1:
     return 1
   elif n == 2:
     return 2
-  return eating_cookies(n-1) + eating_cookies(n-2) + eating_cookies(n-3)
+  result = eating_cookies(n-1, cache) + eating_cookies(n-2, cache) + eating_cookies(n-3, cache)
+  if cache != None:
+    cache[n] = result 
+  return result
 
-print(eating_cookies(5))
+print(eating_cookies(50, [0 for i in range(51)]))
 
 if __name__ == "__main__":
   if len(sys.argv) > 1:
