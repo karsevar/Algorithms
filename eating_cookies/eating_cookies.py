@@ -27,7 +27,7 @@ def eating_cookies(n, cache=None):
   result = eating_cookies(n-1, cache) + eating_cookies(n-2, cache) + eating_cookies(n-3, cache)
   if cache != None:
     cache[n] = result 
-  # print('cache array', cache)
+  print('cache array', cache)
   return result
 
 print(eating_cookies(50, [0 for i in range(51)]))
